@@ -12,7 +12,7 @@ $ mkdir /home/ansible_deployer/.ssh
 $ echo "{SSH公開鍵}" > /home/ansible_deployer/.ssh/authorized_keys
 $ chmod 700 /home/ansible_deployer/.ssh
 $ chmod 600 /home/ansible_deployer/.ssh/authorized_keys
-
+```
 
 ### Ansibleサーバ側作業
 
@@ -66,10 +66,15 @@ $ vi ./vars/data-dog-agent-basic.yml
   
 ### Laravel App
   
+```
 # ansible-playbook /etc/ansibleDatadogAgent/ubuntu18-laravel-nginx-php-fpm.yml --extra-vars "service=ubuntu18-laravel-nginx-php-fpm env=develop project=sampleApp " -v -i /etc/ansibleDatadogAgent/hosts/servers
+```
   
 ### Laravel job-worker
+  
+```
 # ansible-playbook /etc/ansibleDatadogAgent/ubuntu18-laravel-nginx-php-fpm-supervisord.yml --extra-vars "service=ubuntu18-laravel-nginx-php-fpm-supervisord env=develop project=sampleApp " -v -i /etc/ansibleDatadogAgent/hosts/servers
+```
   
 * --extra-vars
   * service … サービス名。Datadog上での表示Hostnameにもなる
