@@ -1,0 +1,4 @@
+- name: reload nginx
+  service: name=nginx state=reloaded
+- name: restart datadog
+  service: name=datadog-agent state=restarted

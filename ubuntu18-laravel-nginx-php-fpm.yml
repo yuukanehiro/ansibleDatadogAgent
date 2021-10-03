@@ -1,0 +1,8 @@
+- hosts: "{{ service }}-{{ env }}"
+  become: yes
+  roles:
+    - { role: datadog.datadog, become: yes }
+    - datadog-agent-ubuntu18-laravel-nginx-php-fpm
+  vars_files:
+    - vars/datadog-agent-basic
+    - vars/datadog-agent-ubuntu18-laravel-nginx-php-fpm

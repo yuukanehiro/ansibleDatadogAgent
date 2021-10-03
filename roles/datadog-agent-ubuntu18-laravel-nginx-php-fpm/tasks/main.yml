@@ -1,0 +1,39 @@
+- name: PHP-Tracer Download
+  get_url: url="https://github.com/DataDog/dd-trace-php/releases/download/0.65.1/datadog-php-tracer_0.65.1_amd64.deb" dest="/tmp/datadog-php-tracer_0.65.1_amd64.deb"
+- name: Install my_package
+  apt:
+    deb: "/tmp/datadog-php-tracer_0.65.1_amd64.deb"
+- name: set logrotate parmission setting
+  shell: |
+    sed -i 's/create 0640/create 0644/' /etc/logrotate.d/nginx
+    sed -i 's/create 0640/create 0644/' /etc/logrotate.d/php7.2-fpm
+- name: copy logrotate rsyslog
+  copy:
+    src: "./files/logrotate.d/rsyslog"
+    dest: "/etc/logrotate.d/rsyslog"
+- name: copy Nginx, PHP-FPM Status File
+  copy:
+    src: "./files/nginx/conf.d/datadog-agent.conf"
+    dest: "/etc/nginx/conf.d/datadog-agent.conf"
+  notify:
+    - reload nginx
+    - restart datadog
+- name: change permission for datadog syslog
+  file:
+    path: /var/log/syslog
+    mode: 0644
+- name: change permission for datadog kern.log
+  file:
+    path: /var/log/kern.log
+    mode: 0644
+- name: change permission for datadog auth.log
+  file:
+    path: /var/log/auth.log
+    mode: 0644
+- name: change permission for datadog nginx/*.log
+  shell: |
+    chmod 0644 /var/log/nginx/*.log
+- name: change permission for datadog php*-fpm.log
+  shell: |
+    chmod 0644 /var/log/php*-fpm.log
+

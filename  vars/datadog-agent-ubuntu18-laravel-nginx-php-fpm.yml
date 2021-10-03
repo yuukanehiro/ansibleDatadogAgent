@@ -1,0 +1,79 @@
+datadog_checks:
+  process:
+    init_config:
+    instances:
+      - name: ssh
+        search_string: ['sshd']
+      - name: nginx
+        search_string: ['nginx']
+      - name: php-fpm
+        search_string: ["php-fpm"]
+        exact_match: False
+  nginx:
+    init_config:
+    instances:
+      - nginx_status_url: http://localhost:81/nginx_status/
+    logs:
+      - type: file
+        path: /var/log/nginx/access.log
+        service: nginx
+        source: nginx
+        sourcecategory: "nginx-acceess"
+      - type: file
+        path: /var/log/nginx/error.log
+        service: nginx
+        source: nginx
+        sourcecategory: "nginx-error"
+  php_fpm:
+    init_config:
+    instances:
+      - status_url: http://localhost:81/status
+        ping_url: http://localhost:81/ping
+        ping_reply: pong
+        use_fastcgi: false
+    logs:
+      - type: file
+        path: /var/log/php*-fpm.log
+        service: php-fpm
+        source: php-fpm
+        sourcecategory: php-fpm
+  system:
+    init_config:
+    instances:
+    logs:
+      - type: file
+        path: /var/log/kern.log
+        service: "{{ service }}"
+        source: system-kern.log
+      - type: file
+        path: /var/log/syslog
+        service: "{{ service }}"
+        source: system-syslog
+      - type: file
+        path: /var/log/auth.log
+        service: "{{ service }}"
+        source: system-auth.log
+      - type: file
+        path: /var/log/lastlog
+        service: "{{ service }}"
+        source: system-lastlog
+      - type: file
+        path: /var/log/wtmp
+        service: "{{ service }}"
+        source: system-wtmp
+  laravel:
+    init_config:
+    instances:
+    logs:
+      - type: file
+        path: "/var/www/{{ project }}/storage/logs/laravel-*.log"
+        service: "{{ service }}"
+        source: laravel.log
+      - type: file
+        path: "/var/www/{{ project }}/storage/logs/request-*.log"
+        service: "{{ service }}"
+        source: request.log
+      - type: file
+        path: "/var/www/{{ project }}/storage/logs/worker.log"
+        service: "{{ service }}"
+        source: worker.log

@@ -1,0 +1,4 @@
+- name: change permission for datadog supervisord socket
+  file:
+    path: /var/run/supervisor.sock
+    mode: 0777
