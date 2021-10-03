@@ -2,7 +2,10 @@
 
 
 ## allow deploy taget server
-ターゲットサーバ側で作業
+  
+### ターゲットサーバ側で作業
+  
+ansibleサーバからの接続許可ユーザを作成
 ```
 $ useradd -m -d /home/ansible_deployer/ -s /bin/bash -G sudo ansible_deployer
 $ touch /etc/sudoers.d/ansible_deployer
