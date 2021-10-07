@@ -42,7 +42,6 @@ datadog_checks:
     instances:
       - name: supervisord
         socket: unix:///var/run/supervisor.sock
-
   system:
     init_config:
     instances:

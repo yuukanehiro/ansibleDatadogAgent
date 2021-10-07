@@ -2,10 +2,8 @@
   become: yes
   roles:
     - { role: datadog.datadog, become: yes }
-    - supervisord
     - datadog-agent-ubuntu18-laravel-nginx-php-fpm
+    - php7.2-fpm
   vars_files:
-    - vars/datadog-agent-basic
-    - vars/datadog-agent-ubuntu18-laravel-nginx-php-fpm-supervisord
-
-
+    - vars/datadog-agent-base
+    - vars/datadog-agent-ubuntu18-laravel-nginx-php-fpm

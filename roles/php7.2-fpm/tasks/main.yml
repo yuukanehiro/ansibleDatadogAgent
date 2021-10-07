@@ -1,0 +1,6 @@
+- name: allow status.html from nginx
+  shell: |
+    sed -i 's/;pm.status_path/pm.status_path/' /etc/php/7.2/fpm/pool.d/www.conf
+    sed -i 's/;ping.path/ping.path/' /etc/php/7.2/fpm/pool.d/www.conf
+  notify:
+    - reload php7.2-fpm

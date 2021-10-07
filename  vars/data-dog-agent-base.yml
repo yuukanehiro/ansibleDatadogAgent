@@ -2,7 +2,6 @@ datadog_api_key: "{🐱 datadog_api_keyを入力してください 🐱}"
 datadog_site: "datadoghq.com"
 datadog_agent_version: "7.16.0"
 datadog_config:
-  hostname: "{{ service }}-{{ env }}"
   hostname_fqdn: true
   collect_ec2_tags: true
   tags:
@@ -15,7 +14,7 @@ datadog_config:
     env: "{{ env }}"
   logs_enabled: true
   logs_config:
-    open_files_limit: 1000
+    open_files_limit: 2000
   process_config:
     enabled: true
     process_dd_url: https://process.datadoghq.com

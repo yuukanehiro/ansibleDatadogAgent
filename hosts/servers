@@ -1,23 +1,23 @@
 ## develop ---------------------------
-[ubuntu18-laravel-nginx-php-fpm-develop]
+[ubuntu18-laravel-nginx-php7.2-fpm-develop]
 172.31.11.2
 
-[ubuntu18-laravel-nginx-php-fpm-supervisord-develop]
+[ubuntu18-laravel-nginx-php7.2-fpm-supervisord-develop]
 172.31.21.2
 
 ## staging ---------------------------
-[ubuntu18-laravel-nginx-php-fpm-staging]
+[ubuntu18-laravel-nginx-php7.2-fpm-staging]
 172.31.11.3
 
-[ubuntu18-laravel-nginx-php-fpm-supervisord-staging]
+[ubuntu18-laravel-nginx-php7.2-fpm-supervisord-staging]
 172.31.21.3
 
 
 ## production ------------------------
-[ubuntu18-laravel-nginx-php-fpm-production]
+[ubuntu18-laravel-nginx-php7.2-fpm-production]
 172.31.11.4
 
-[ubuntu18-laravel-nginx-php-fpm-supervisord-production]
+[ubuntu18-laravel-nginx-php7.2-fpm-supervisord-production]
 172.31.21.4
 
 
