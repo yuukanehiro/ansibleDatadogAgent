@@ -80,6 +80,6 @@ $ vi ./vars/data-dog-agent-basic.yml
 ```
   
 * --extra-vars
-  * service … サービス名。Datadog上での表示Hostnameにもなる
+  * service … サービス名。
   * env … develop| staging | production
   * project … プロジェクト名。/var/www/{プロジェクト名}に対応するようにする
